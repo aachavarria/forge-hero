@@ -128,8 +128,18 @@ const DIVIDER_CLASSES = new Set([
   "wizard",
 ]);
 
+// Card art is served from the public R2 bucket. NEXT_PUBLIC_R2_BASE overrides
+// the base URL (e.g. to swap in a custom CDN domain) and is inlined at build
+// time; it defaults to the bucket's r2.dev URL so a fresh clone works as-is.
+const R2_BASE = (
+  process.env.NEXT_PUBLIC_R2_BASE ??
+  "https://pub-d742190c80344b5ba0ce91e48db93c02.r2.dev"
+).replace(/\/+$/, "");
+
 const artUrl = (image?: string | null) =>
-  image ? `/card-art/${image.split("/").map(encodeURIComponent).join("/")}` : null;
+  image
+    ? `${R2_BASE}/${image.split("/").map(encodeURIComponent).join("/")}`
+    : null;
 
 function normalize(raw: RawCard, collection: Collection): CardRecord {
   const { html, credits } = parseCardHtml(raw.displayHtml);
