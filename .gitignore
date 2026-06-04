@@ -46,3 +46,11 @@ next-env.d.ts
 
 # copyrighted source PDFs (input to scripts, not needed at runtime)
 /*.pdf
+
+# OpenNext / Cloudflare build output and local secrets
+/.open-next/
+/.wrangler/
+.dev.vars
+# generated workerd runtime types (not needed: app uses no CF bindings)
+/cloudflare-env.d.ts
+/worker-configuration.d.ts

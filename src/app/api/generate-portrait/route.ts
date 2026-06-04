@@ -41,8 +41,12 @@ export async function POST(req: Request) {
   let reference: { mimeType: string; data: string } | null = null;
   let aspectRatio: string | null = null;
   try {
-    const body = await req.json();
-    prompt = (body?.prompt ?? "").toString().trim();
+    const body = (await req.json()) as {
+      prompt?: unknown;
+      image?: unknown;
+      aspectRatio?: unknown;
+    };
+    prompt = String(body?.prompt ?? "").trim();
     // Optional reference image (data URL): turns the call into an image-to-image
     // edit, so the model keeps the same character instead of inventing a new one.
     reference = parseDataUrl(body?.image);
@@ -81,7 +85,10 @@ export async function POST(req: Request) {
       }),
     });
 
-    const data = await res.json();
+    const data = (await res.json()) as {
+      error?: { message?: string };
+      candidates?: Array<{ content?: { parts?: GeminiPart[] } }>;
+    };
 
     if (!res.ok) {
       const message =
