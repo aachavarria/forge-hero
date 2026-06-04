@@ -1,26 +1,648 @@
 @import "tailwindcss";
 
+/* ── Theme tokens ─────────────────────────────────────────────────────────
+   "Illuminated grimoire": warm near-black ink, ember-gold light, the cold
+   violet of Fear as a counterpoint. */
+@theme {
+  --color-ink-900: #0b0907;
+  --color-ink-800: #131009;
+  --color-ink-700: #1a1610;
+  --color-ink-600: #231d15;
+  --color-ink-500: #322a1f;
+
+  --color-parch: #ece2d0;
+  --color-parch-dim: #b7ab94;
+  --color-parch-faint: #80755f;
+
+  --color-ember: #d8a94e;
+  --color-ember-bright: #f1cb6e;
+  --color-hope: #e8c15a;
+  --color-fear: #8a78f0;
+  --color-crimson: #d4584d;
+
+  --color-line: rgba(216, 169, 78, 0.18);
+  --color-line-soft: rgba(236, 226, 208, 0.08);
+
+  --font-display: var(--font-marcellus), Georgia, serif;
+  --font-body: var(--font-spectral), Georgia, serif;
+
+  --radius-tome: 6px;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-ink-900);
+  color: var(--color-parch);
+  font-family: var(--font-body);
+  /* Layered atmosphere: two ember glows + a deep vignette. */
+  background-image:
+    radial-gradient(
+      900px 600px at 12% -8%,
+      rgba(216, 169, 78, 0.14),
+      transparent 60%
+    ),
+    radial-gradient(
+      1100px 700px at 100% 0%,
+      rgba(138, 120, 240, 0.08),
+      transparent 55%
+    ),
+    radial-gradient(
+      120% 120% at 50% 120%,
+      rgba(0, 0, 0, 0.55),
+      transparent 55%
+    );
+  background-attachment: fixed;
+  font-feature-settings: "liga" 1, "calt" 1;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
+
+/* Fine grain overlay sitting above the page background. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── Typographic helpers ──────────────────────────────────────────────── */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.34em;
+  font-size: 0.68rem;
+  color: var(--color-ember);
+}
+
+.title-shadow {
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.6), 0 0 32px rgba(216, 169, 78, 0.18);
+}
+
+/* ── Surfaces ─────────────────────────────────────────────────────────── */
+.panel {
+  background:
+    linear-gradient(180deg, rgba(255, 245, 225, 0.03), transparent 40%),
+    var(--color-ink-700);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-tome);
+  box-shadow:
+    0 1px 0 rgba(255, 245, 225, 0.04) inset,
+    0 24px 60px -36px rgba(0, 0, 0, 0.9);
+}
+
+.hairline {
+  border-color: var(--color-line);
+}
+
+/* Decorative gradient rule. */
+.rule {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-line) 20%,
+    var(--color-ember) 50%,
+    var(--color-line) 80%,
+    transparent
+  );
+  opacity: 0.7;
+}
+
+/* ── Controls ─────────────────────────────────────────────────────────── */
+.field {
+  width: 100%;
+  background: rgba(11, 9, 7, 0.6);
+  border: 1px solid var(--color-line-soft);
+  border-radius: var(--radius-tome);
+  padding: 0.7rem 0.9rem;
+  color: var(--color-parch);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  outline: none;
+}
+.field::placeholder {
+  color: var(--color-parch-faint);
+}
+.field:focus {
+  border-color: var(--color-ember);
+  box-shadow: 0 0 0 3px rgba(216, 169, 78, 0.16);
+  background: rgba(11, 9, 7, 0.85);
+}
+textarea.field {
+  resize: vertical;
+  min-height: 5rem;
+  line-height: 1.55;
+}
+
+/* ── Scrollbar ────────────────────────────────────────────────────────── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-ink-500) transparent;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--color-ink-500);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ember);
+  background-clip: padding-box;
+}
+
+::selection {
+  background: rgba(216, 169, 78, 0.28);
+  color: #fff;
+}
+
+/* ── Motion ───────────────────────────────────────────────────────────── */
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.rise {
+  animation: riseIn 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Daggerheart cards ─────────────────────────────────────────────────────
+   Light, parchment-faced cards (like the printed ones) themed per class/domain
+   via --card-accent / --card-accent-soft / --card-ink set inline. */
+.dh-card {
+  --card-accent: var(--color-ember);
+  --card-accent-soft: #f6efdb;
+  --card-ink: #2a2118;
+  width: 340px;
+  max-width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fdfbf6;
+  border: 2px solid color-mix(in srgb, var(--card-accent) 55%, #c9c2b2);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    0 18px 40px -26px rgba(0, 0, 0, 0.85);
+  color: var(--card-ink);
+}
+
+/* Composed cards are a FIXED 340×476 frame (like the printed cards): the art
+   sits at the top and the white text panel is anchored to the bottom, growing
+   upward over the art as the rules text gets longer. */
+.dh-card--composed {
+  position: relative;
+  height: 476px;
+}
+
+.dh-card--flat {
+  border: none;
+  background: transparent;
+  box-shadow: 0 18px 40px -26px rgba(0, 0, 0, 0.85);
+  aspect-ratio: 5 / 7;
+}
+.dh-card__flat-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 14px;
+}
+
+.dh-card__art {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  background: var(--card-accent-soft);
+}
+/* banner image keeps its natural aspect, anchored to the top */
+.dh-card__art img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+/* heraldic class pennant hanging from the top-left of the art.
+   Higher specificity than `.dh-card__art img` so it doesn't inherit the
+   cover/100% sizing of the banner image (that bug made it fill the card). */
+.dh-card__art img.dh-card__pennant {
+  position: absolute;
+  top: -20px;
+  left: 10px;
+  width: 62px;
+  height: auto;
+  object-fit: contain;
+  object-position: center top;
+  z-index: 2;
+  filter: drop-shadow(0 5px 7px rgba(0, 0, 0, 0.55));
+}
+.dh-card__art-blank {
+  width: 100%;
+  height: 272px;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(120% 80% at 50% 0%, color-mix(in srgb, var(--card-accent) 22%, transparent), transparent 70%),
+    var(--card-accent-soft);
+}
+.dh-card__art-blank span {
+  font-family: var(--font-card), Georgia, serif;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.8rem;
+  color: color-mix(in srgb, var(--card-accent) 70%, #000);
+  opacity: 0.7;
+}
+
+/* White text panel: anchored to the bottom, grows upward over the art. */
+.dh-card__panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-height: 216px;
+  max-height: 100%;
+  background: #fdfbf6;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+.dh-card__divider {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-top: -22px;
+  position: relative;
+  z-index: 2;
+}
+.dh-card__divider--rule {
+  height: 4px;
+  margin-top: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--card-accent) 20%,
+    var(--card-accent) 80%,
+    transparent
+  );
+}
+
+/* Ancestry & community cards use a wide banner-divider that bleeds past the
+   card edges and is cropped to an 80px strip straddling the art/panel seam,
+   reproducing Demiplane's `.card-bottom-container::before`. It's decorative and
+   sits behind the title rather than taking layout space. */
+.dh-card--ancestry .dh-card__panel::before,
+.dh-card--community .dh-card__panel::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 80px;
+  z-index: 0;
+  background-position: top center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+.dh-card--ancestry .dh-card__panel::before {
+  top: -26px;
+  background-image: url("/cards/dividers/ancestries.webp");
+  background-size: 416px;
+}
+.dh-card--community .dh-card__panel::before {
+  top: -76px;
+  background-image: url("/cards/dividers/communities.webp");
+  background-size: 362px;
+}
+
+/* Collection tag sitting inside the divider's cartouche box. */
+.dh-card--ancestry .dh-card__panel::after,
+.dh-card--community .dh-card__panel::after {
+  position: absolute;
+  z-index: 1;
+  font-family: var(--font-card), Georgia, serif;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 600;
+  font-size: 0.5rem;
+  color: color-mix(in srgb, var(--card-accent) 78%, #000);
+  pointer-events: none;
+  white-space: nowrap;
+}
+.dh-card--ancestry .dh-card__panel::after {
+  content: "Ancestry";
+  top: 16px;
+  right: 24px;
+}
+.dh-card--community .dh-card__panel::after {
+  content: "Community";
+  top: -29px;
+  right: 35px;
+}
+
+.dh-card__title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem 0.2rem;
+}
+.dh-card__title h3 {
+  font-family: var(--font-card), Georgia, serif;
+  font-weight: 700;
+  font-size: 1.12rem;
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--card-ink);
+}
+
+/* Ancestry & community share a decorative frame-divider (the panel ::before)
+   with an opaque parchment fill. Keep the title/body painted ABOVE that frame
+   (the fill matches the panel, so it vanishes) and give the title a larger,
+   bolder treatment like the printed cards. */
+.dh-card--ancestry .dh-card__title,
+.dh-card--ancestry .dh-card-body,
+.dh-card--community .dh-card__title,
+.dh-card--community .dh-card-body {
+  position: relative;
+  z-index: 1;
+}
+.dh-card--ancestry .dh-card__title,
+.dh-card--community .dh-card__title {
+  padding-top: 0.55rem;
+}
+.dh-card--ancestry .dh-card__title h3,
+.dh-card--community .dh-card__title h3 {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+/* collection tag (COMMUNITY / ANCESTRY) */
+.dh-card__badge {
+  flex-shrink: 0;
+  font-family: var(--font-card), Georgia, serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.52rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--card-accent) 55%, #b9b2a0);
+  color: color-mix(in srgb, var(--card-accent) 80%, #000);
+  background: color-mix(in srgb, var(--card-accent) 14%, #fff);
+  white-space: nowrap;
+}
+/* tier label pill (Foundation / Specialization / Mastery, or Spell · Level N).
+   Sits inline in the title row, opposite the name — same slot as the badge. */
+.dh-card__subtitle {
+  flex-shrink: 0;
+  font-family: var(--font-card), Georgia, serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.54rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  color: #fffaf0;
+  background: color-mix(in srgb, var(--card-accent) 82%, #2a2118);
+  white-space: nowrap;
+}
+
+/* Rules text */
+.dh-card-body {
+  font-family: var(--font-eb-garamond), Georgia, serif;
+  font-size: 0.84rem;
+  line-height: 1.3;
+  color: #211d17;
+  padding: 0.25rem 0.9rem 0.5rem;
+  flex: 1;
+  overflow: hidden;
+}
+.dh-card-body p {
+  margin: 0 0 0.4rem;
+}
+.dh-card-body p:last-child {
+  margin-bottom: 0;
+}
+.dh-card-body .vertical-card-H2 {
+  font-family: var(--font-card), Georgia, serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-align: center;
+  color: color-mix(in srgb, var(--card-accent) 70%, #000);
+  margin-bottom: 0.5rem;
+}
+.dh-card-body ul {
+  list-style: none;
+  margin: 0 0 0.55rem;
+  padding: 0;
+}
+.dh-card-body li {
+  position: relative;
+  padding-left: 1rem;
+  margin-bottom: 0.3rem;
+}
+.dh-card-body li::before {
+  content: "◆";
+  position: absolute;
+  left: 0;
+  top: 0.05em;
+  font-size: 0.6em;
+  color: var(--card-accent);
+}
+.dh-card-body strong {
+  font-weight: 700;
+}
+.dh-card-body em {
+  font-style: italic;
+}
+/* ancestry/community intro line is italic */
+.dh-card-body .italics-ancestry,
+.dh-card-body .italics-ancestry em {
+  font-style: italic;
+}
+.dh-card-body .Body-anc {
+  font-style: normal;
+}
+/* glossary terms (were <tooltip>) */
+.dh-card-body .dh-tip {
+  color: color-mix(in srgb, var(--card-accent) 78%, #000);
+  border-bottom: 1px dotted color-mix(in srgb, var(--card-accent) 60%, #888);
+  cursor: help;
+}
+
+.dh-card__credits {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 0.3rem 0.9rem 0.4rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  font-family: var(--font-eb-garamond), Georgia, serif;
+  font-size: 0.6rem;
+  font-style: italic;
+  color: #8a8073;
+}
+
+/* Class "library" cards (dark, art-led) used in the class picker. */
+.dh-classcard {
+  display: flex;
+  flex-direction: column;
+}
+.dh-classcard__art {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+.dh-classcard__bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.5rem;
+  background: color-mix(in srgb, var(--cc) 20%, var(--color-ink-800));
+  border-top: 2px solid var(--cc);
+}
+.dh-classcard__name {
+  font-family: var(--font-card), Georgia, serif;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: var(--color-parch);
+}
+.dh-classcard__meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 0.4rem 0.5rem 0.55rem;
+  font-size: 0.66rem;
+  letter-spacing: 0.02em;
+  color: var(--color-parch-dim);
+}
+
+/* ── Domain cards ──────────────────────────────────────────────────────────
+   Composed like ancestry/community but with a level banner hanging top-left,
+   a recall badge top-right, and a type plaque on the divider. */
+
+/* Domain banner (vertical pennant) carrying the card level. Higher specificity
+   than `.dh-card__art img` so it keeps its own size. */
+.dh-card--domain .dh-card__art img.dh-card__banner {
+  position: absolute;
+  top: -6px;
+  left: 16px;
+  width: 48px;
+  height: auto;
+  object-fit: contain;
+  object-position: center top;
+  z-index: 3;
+  filter: drop-shadow(0 6px 9px rgba(0, 0, 0, 0.55));
+}
+.dh-card--domain .dh-card__level {
+  position: absolute;
+  top: 13px;
+  left: 16px;
+  width: 48px;
+  text-align: center;
+  z-index: 4;
+  font-family: var(--font-card), Georgia, serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: #fef7e6;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);
+}
+.dh-card--domain .dh-card__recall {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  min-width: 25px;
+  height: 25px;
+  padding: 0 7px;
+  border-radius: 999px;
+  background: rgba(16, 12, 26, 0.82);
+  border: 1px solid color-mix(in srgb, var(--card-accent) 65%, #000);
+  color: #fef7e6;
+  font-family: var(--font-card), Georgia, serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  line-height: 1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+}
+.dh-card--domain .dh-card__recall-icon {
+  font-size: 0.7rem;
+  opacity: 0.85;
+}
+
+/* Type plaque ("SPELL"/"ABILITY"/"GRIMOIRE") centered on the divider band. */
+.dh-card__domain-divider {
+  position: relative;
+  width: 100%;
+}
+.dh-card--domain .dh-card__type {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  margin-top: -16px;
+  z-index: 2;
+  font-family: var(--font-card), Georgia, serif;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 700;
+  font-size: 0.6rem;
+  color: #fdeccb;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Domain title is centered like the printed cards. */
+.dh-card--domain .dh-card__title {
+  justify-content: center;
+  padding-top: 0.5rem;
+}
+.dh-card--domain .dh-card__title h3 {
+  font-size: 1.4rem;
+  text-align: center;
+}
+

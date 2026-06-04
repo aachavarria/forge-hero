@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Forge a Hero — Daggerheart Character Creator
 
-## Getting Started
+A guided, step-by-step character creator for **Daggerheart**, built with Next.js
++ Tailwind. Styled as an *illuminated grimoire*: warm ink, ember-gold light, and
+arcana cards tinted by their domain. Inspired by heartofdaggers.com, with our own
+look.
 
-First, run the development server:
+## Features
+
+- **12-chapter wizard** following the SRD's creation flow: name → class &
+  subclass → heritage (ancestry + community) → traits → equipment → domain cards
+  → background → experiences → connections → appearance → portrait → review.
+- **Live character sheet** — Evasion, HP, Stress, Hope and damage thresholds
+  update as you choose.
+- **Local & offline** — all game data is bundled from JSON (no API calls to play).
+  Progress autosaves to your browser.
+- **Portrait** — upload your own art, or generate one with Gemini from a prompt
+  auto-built from your character.
+- **Export** — download the finished character as JSON, or print the sheet.
+
+## Run it
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# open http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Portrait generation (optional)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Image **upload** works out of the box. To enable **AI generation**:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+cp .env.example .env.local
+# put your key in GEMINI_API_KEY (https://aistudio.google.com/apikey)
+npm run dev
+```
 
-## Learn More
+Without a key, the Generate button returns a friendly "not configured" message
+and upload remains available.
 
-To learn more about Next.js, take a look at the following resources:
+## Data
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Game data lives in `src/data/json/` (classes, subclasses, domains, abilities,
+ancestries, communities, weapons, armor, items, consumables, transformations),
+mirrored from the original download in `../data/`. Source: heartofdaggers.com.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project layout
 
-## Deploy on Vercel
+```
+src/
+  app/            page, layout, globals.css, api/generate-portrait
+  components/     Creator, Welcome, Atmosphere, ui, wizard/*, steps/*
+  lib/            types, data, derive, domains, store (zustand), steps, validation
+  data/json/      bundled game data
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Daggerheart SRD content © Critical Role / Darrington Press, used under the
+Darrington Press Community Gaming License.

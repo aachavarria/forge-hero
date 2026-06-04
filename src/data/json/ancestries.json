@@ -1,0 +1,272 @@
+[
+  {
+    "name": "Clank",
+    "description": "Los Clank son seres mecánicos conscientes, construidos a partir de materiales muy diversos, como metal, madera y piedra. Pueden parecerse a humanoides, animales o incluso objetos inanimados. Igual que los seres orgánicos, sus cuerpos vienen en una enorme variedad de tamaños. Debido a su construcción a medida, muchos Clank tienen configuraciones físicas muy especializadas. Algunos ejemplos son manos con garras para agarrar, ruedas para desplazarse o armamento integrado.\n\nMuchos Clank adoptan modificaciones corporales tanto por estilo como por función, y miembros de otras ascendencias suelen acudir a los artesanos Clank para que les construyan ayudas de movilidad y adornos físicos personalizados. Otras ascendencias pueden crear Clank, incluso usando sus propias características físicas como inspiración, pero también es común que los Clank se construyan entre sí. La vida de un Clank se prolonga mientras pueda conseguir o fabricar piezas nuevas, lo que hace que su forma física sea prácticamente inmortal. Dicho esto, sus mentes sí están sujetas al paso del tiempo y se deterioran a medida que la magia que los anima pierde potencia.",
+    "feats": [
+      {
+        "name": "Purposeful Design",
+        "text": "Decide who made you and for what purpose. At character creation, choose one of your Experiences that best aligns with this purpose and gain a permanent +1 bonus to it."
+      },
+      {
+        "name": "Efficient",
+        "text": "When you take a short rest, you can choose a long rest move instead of a short rest move."
+      }
+    ]
+  },
+  {
+    "name": "Drakona",
+    "description": "Los Drakona se asemejan a dragones sin alas con forma humanoide y poseen un poderoso aliento elemental. Todos los Drakona tienen gruesas escamas que les brindan una excelente armadura natural tanto contra los ataques como contra las fuerzas de la naturaleza. Son de gran tamaño, midiendo de media entre 5 y 7 pies, con dientes largos y afilados. A lo largo de su vida, de unos 350 años, les crecen dientes nuevos, así que nunca corren el peligro de perder un incisivo para siempre. A diferencia de sus ancestros dragones, los Drakona no tienen alas y no pueden volar sin ayuda mágica. Los miembros de esta ascendencia transmiten el elemento de su aliento de generación en generación, aunque en raras ocasiones el poder elemental de un Drakona puede diferir del del resto de su familia.",
+    "feats": [
+      {
+        "name": "Scales",
+        "text": "Your scales act as natural protection. When you would take Severe damage, you can **mark a Stress** to mark 1 fewer Hit Points."
+      },
+      {
+        "name": "Elemental Breath",
+        "text": "Choose an element for your breath (such as electricity, fire, or ice). You can use this breath against a target or group of targets within Very Close range, treating it as an Instinct weapon that deals **d8** magic damage using your Proficiency."
+      }
+    ]
+  },
+  {
+    "name": "Dwarf",
+    "description": "Los Dwarf se reconocen con facilidad como humanoides bajos de complexión cuadrada, musculatura densa y cabello espeso. Su estatura media va de los 4 a los 5 ½ pies, y suelen ser anchos en proporción a su altura. Su piel y sus uñas contienen una alta cantidad de queratina, lo que los hace naturalmente resistentes. Esto permite a los Dwarf incrustarse gemas en el cuerpo y adornarse con tatuajes o piercings. Su cabello crece de forma espesa —normalmente en la cabeza, aunque algunos Dwarf también tienen vello abundante por todo el cuerpo—. Los Dwarf de cualquier género pueden dejarse crecer vello facial, que a menudo peinan en elaborados arreglos. Por lo general, los Dwarf viven hasta los 250 años y mantienen su masa muscular bien entrada la vejez.",
+    "feats": [
+      {
+        "name": "Thick Skin",
+        "text": "When you take Minor damage, you can **mark 2 Stress** instead of marking a Hit Point."
+      },
+      {
+        "name": "Increased Fortitude",
+        "text": "**Spend 3 Hope** to halve incoming physical damage."
+      }
+    ]
+  },
+  {
+    "name": "Elf",
+    "description": "Los Elf son normalmente humanoides altos, de orejas puntiagudas y sentidos sumamente aguzados. Sus orejas varían en tamaño y forma puntiaguda y, con la edad, las puntas empiezan a caer. Aunque los Elf presentan una amplia variedad de complexiones, todos son bastante altos, con estaturas que rondan los 6 a 6 ½ pies. Todos los Elf tienen la capacidad de entrar en un trance celestial en lugar de dormir. Esto les permite descansar de forma eficaz en poco tiempo.\n\nAlgunos Elf poseen lo que se conoce como una «forma mística», que surge cuando un Elf se ha consagrado tan profundamente al estudio o la protección del mundo natural que su forma física cambia. Estas características pueden incluir pecas celestiales, la presencia de hojas, enredaderas o flores en el cabello, ojos que titilan como el fuego y más. A veces estos rasgos se heredan de los progenitores, pero si un Elf cambia de entorno o de enfoque mágico, su aspecto se transforma con el tiempo. Como los Elf viven unos 350 años, estos rasgos pueden cambiar más de una vez a lo largo de su vida.",
+    "feats": [
+      {
+        "name": "Quick Reactions",
+        "text": "**Mark a Stress** to gain advantage on a reaction roll."
+      },
+      {
+        "name": "Celestial Trance",
+        "text": "During a rest, you can drop into a trance to choose an additional downtime move."
+      }
+    ]
+  },
+  {
+    "name": "Faerie",
+    "description": "Los Faerie son criaturas humanoides aladas con rasgos insectiles. Estas características abarcan un amplio espectro, de lo humanoide a lo insectoide: algunos poseen brazos adicionales, ojos compuestos, órganos luminosos, exoesqueletos quitinosos o aguijones. Debido a sus estrechos lazos con el mundo natural, también suelen tener atributos que les permiten camuflarse entre diversas plantas. La estatura media de un Faerie va de unos 2 a 5 pies, aunque algunos llegan a medir hasta 7 pies. Todos los Faerie poseen alas membranosas y cada uno atraviesa un proceso de metamorfosis. El proceso y los cambios difieren de un Faerie a otro, pero durante esta transformación cada individuo manifiesta el aspecto único que conservará durante el resto de su vida, de unos 50 años.",
+    "feats": [
+      {
+        "name": "Luckbender",
+        "text": "Once per session, after you or a willing ally within Close range makes an action roll, you can **spend 3 Hope** to reroll the Duality Dice.",
+        "tracked": true,
+        "use_amount": "1",
+        "condition": "session"
+      },
+      {
+        "name": "Wings",
+        "text": "You can fly. While flying, you can **mark a Stress** after an adversary makes an attack against you to gain a +2 bonus to your Evasion against that attack."
+      }
+    ]
+  },
+  {
+    "name": "Faun",
+    "description": "Los Faun se asemejan a cabras humanoides, con cuernos curvos, pupilas cuadradas y pezuñas hendidas. Aunque su aspecto puede variar, la mayoría de los Faun tienen un torso humanoide y una parte inferior caprina cubierta de un pelaje denso. Los rostros Faun pueden ser más caprinos o más humanos, y tienen una gran variedad de formas de orejas y cuernos. Los cuernos Faun van desde cortos y con poca curvatura hasta mucho más grandes, con un rizo bien marcado. El Faun medio mide entre 4 y 6 ½ pies, pero su altura puede cambiar drásticamente de un momento a otro según su postura. La mayoría de los Faun tienen extremidades proporcionalmente largas, sin importar su tamaño o forma, y son conocidos por su capacidad de asestar golpes poderosos con sus pezuñas hendidas. Los Faun viven unos 225 años y, a medida que envejecen, su aspecto puede volverse cada vez más caprino.",
+    "feats": [
+      {
+        "name": "Caprine Leap",
+        "text": "You can leap anywhere within Close range as though you were using normal movement, allowing you to vault obstacles, jump across gaps, or scale barriers with ease."
+      },
+      {
+        "name": "Kick",
+        "text": "When you succeed on an attack against a target within Melee range, you can **mark a Stress** to kick yourself off them, dealing an extra **2d6** damage and knocking back either yourself or the target to Very Close range."
+      }
+    ]
+  },
+  {
+    "name": "Firbolg",
+    "description": "Los Firbolg son humanoides bovinos, reconocibles por lo general por su nariz ancha y sus largas orejas caídas. Algunos tienen rostros que son una mezcla de humanoide y bisonte, buey, vaca u otra criatura bovina. Otros, a menudo llamados minotauros, tienen cabezas que recuerdan por completo a las del ganado. Son criaturas altas y musculosas, con largas colas que van de unos 3 a 7 pies, y poseen una fuerza notable sin importar su edad. Se sabe que algunos Firbolg usan esa fuerza para embestir a sus adversarios, una acción especialmente eficaz para quienes lucen uno de los muchos estilos de cuerno comunes en esta ascendencia. Aunque sus características particulares pueden variar, todos los Firbolg están cubiertos de pelaje, que puede ser de colores apagados y terrosos, o presentarse en una variedad de tonos pastel, como suaves rosas y azules. De media, los Firbolg viven unos 150 años.",
+    "feats": [
+      {
+        "name": "Charge",
+        "text": "When you succeed on an Agility Roll to move from Far or Very Far range into Melee range with one or more targets, you can **mark a Stress** to deal **1d12** physical damage to all targets within Melee range."
+      },
+      {
+        "name": "Unshakable",
+        "text": "When you would mark a Stress, roll a **d6**. On a result of 6, don’t mark it."
+      }
+    ]
+  },
+  {
+    "name": "Fungril",
+    "description": "Los Fungril se asemejan a setas humanoides. Pueden tener un aspecto más humanoide o más fúngico, y se presentan en un surtido de colores, desde tonos terrosos hasta vivos rojos, amarillos, púrpuras y azules. Los Fungril exhiben una variedad increíble de cuerpos, rostros y extremidades, pues no existe una única forma común entre ellos. Incluso sus estaturas van desde unos diminutos 2 pies hasta unos asombrosos 7 pies. Aunque la esperanza de vida habitual de un Fungril ronda los 300 años, se ha informado de algunos que viven mucho más. Pueden comunicarse de forma no verbal, y muchos miembros de esta ascendencia usan una red micelial para intercambiar información químicamente con otros Fungril a grandes distancias.",
+    "feats": [
+      {
+        "name": "Fungril Network",
+        "text": "Make an **Instinct Roll (12)** to use your mycelial array to speak with others of your ancestry. On a success, you can communicate across any distance."
+      },
+      {
+        "name": "Death Connection",
+        "text": "While touching a corpse that died recently, you can **mark a Stress** to extract one memory from the corpse related to a specific emotion or sensation of your choice."
+      }
+    ]
+  },
+  {
+    "name": "Galapa",
+    "description": "Los Galapa se asemejan a tortugas antropomorfas, con grandes caparazones abovedados en los que pueden replegarse. De media miden entre 4 y 6 pies, y la forma de su cabeza y su cuerpo puede recordar a cualquier tipo de tortuga. Los Galapa presentan una variedad de tonos terrosos —con mayor frecuencia matices de verde y marrón— y lucen patrones únicos en sus caparazones. Los miembros de esta ascendencia pueden recoger la cabeza, los brazos y las piernas dentro del caparazón para protegerse, usándolo como un escudo natural cuando hacen falta medidas defensivas. Algunos refuerzan la resistencia o el aspecto de su caparazón añadiéndole armadura o tallando diseños únicos, pero el proceso es sumamente doloroso. La mayoría de los Galapa se mueven con lentitud sin importar su edad, y pueden vivir unos 150 años.",
+    "feats": [
+      {
+        "name": "Shell",
+        "text": "Gain a bonus to your damage thresholds equal to your Proficiency.",
+        "bonus": {
+          "thresholds": "proficiency"
+        }
+      },
+      {
+        "name": "Retract",
+        "text": "**Mark a Stress** to retract into your shell. While in your shell, you have resistance to physical damage, you have disadvantage on action rolls, and you can’t move."
+      }
+    ]
+  },
+  {
+    "name": "Giant",
+    "description": "Los Giant son humanoides imponentes, de hombros anchos, brazos largos y de uno a tres ojos. Los Giant adultos miden entre 6 ½ y 8 ½ pies y son naturalmente musculosos, sea cual sea su complexión. Se los reconoce con facilidad por sus anchas siluetas y sus brazos y cuellos alargados. Aunque pueden llegar a tener tres ojos, todos los Giant nacen sin ninguno y permanecen ciegos durante su primer año de vida. Hasta que un Giant cumple los 10 años y sus rasgos se desarrollan por completo, la formación de sus ojos puede fluctuar. A quienes tienen un solo ojo se los conoce comúnmente como cíclopes. La esperanza de vida media de un Giant ronda los 75 años.",
+    "feats": [
+      {
+        "name": "Endurance",
+        "text": "Gain an additional Hit Point slot at character creation.",
+        "bonus": {
+          "hp": "+1"
+        }
+      },
+      {
+        "name": "Reach",
+        "text": "Treat any weapon, ability, spell, or other feature that has a Melee range as though it has a Very Close range instead."
+      }
+    ]
+  },
+  {
+    "name": "Goblin",
+    "description": "Los Goblin son humanoides pequeños, fácilmente reconocibles por sus grandes ojos y sus enormes orejas membranosas. Con un oído fino y una vista aguda, perciben detalles tanto a gran distancia como en la oscuridad, lo que les permite moverse con soltura por entornos poco favorables. Los colores de su piel y sus ojos son enormemente variados, sin que ningún tono, vivo o apagado, predomine sobre los demás. Un Goblin típico mide entre 3 y 4 pies, y cada una de sus orejas es más o menos del tamaño de su cabeza. Se sabe que los Goblin usan la posición de sus orejas con efectos muy concretos al comunicarse de forma no verbal. La esperanza de vida de un Goblin ronda los 100 años, y muchos conservan su agudo oído y su buena vista bien entrada la vejez.",
+    "feats": [
+      {
+        "name": "Surefooted",
+        "text": "You ignore disadvantage on Agility Rolls."
+      },
+      {
+        "name": "Danger Sense",
+        "text": "Once per rest, **mark a Stress** to force an adversary to reroll an attack against you or an ally within Very Close range.",
+        "tracked": true,
+        "use_amount": "1",
+        "condition": "shortRest"
+      }
+    ]
+  },
+  {
+    "name": "Halfling",
+    "description": "Los Halfling son humanoides pequeños, de grandes pies peludos y prominentes orejas redondeadas. De media, los Halfling miden entre 3 y 4 pies, y sus orejas, su nariz y sus pies son más grandes en proporción al resto de su cuerpo. Los miembros de esta ascendencia viven unos 150 años, y es probable que el aspecto de un Halfling se mantenga juvenil incluso al pasar de la adultez a la vejez. Los Halfling están naturalmente en sintonía con los campos magnéticos del Reino Mortal, lo que les otorga una fuerte brújula interna. También poseen agudos sentidos del oído y el olfato, y a menudo pueden reconocer a quienes les resultan familiares por el sonido de sus movimientos.",
+    "feats": [
+      {
+        "name": "Luckbringer",
+        "text": "At the start of each session, everyone in your party gains a Hope."
+      },
+      {
+        "name": "Internal Compass",
+        "text": "When you roll a 1 on your Hope Die, you can reroll it."
+      }
+    ]
+  },
+  {
+    "name": "Human",
+    "description": "Los Human se reconocen con mayor facilidad por sus manos diestras, sus orejas redondeadas y sus cuerpos preparados para la resistencia. Su estatura media va de poco menos de 5 pies a unos 6 ½ pies. Presentan una gran variedad de complexiones: algunos bastante anchos, otros esbeltos y muchos en el punto intermedio. Los Human son físicamente adaptables y se ajustan a los climas más duros con relativa facilidad. En general, los Human viven hasta los 100 años, y su cuerpo cambia drásticamente entre sus primeros y sus últimos años.",
+    "feats": [
+      {
+        "name": "High Stamina",
+        "text": "Gain an additional Stress slot at character creation.",
+        "bonus": {
+          "stress": "+1"
+        }
+      },
+      {
+        "name": "Adaptability",
+        "text": "When you fail a roll that utilized one of your Experiences, you can mark a Stress to reroll."
+      }
+    ]
+  },
+  {
+    "name": "Infernis",
+    "description": "Los Infernis son humanoides que poseen afilados colmillos caninos, orejas puntiagudas y cuernos. Son descendientes de los demonios de los Círculos de Abajo. De media, los Infernis miden entre 5 y 7 pies y son conocidos por sus dedos largos y sus uñas afiladas. Algunos tienen colas largas, finas y lisas que terminan en puntas, horquillas o cabezas de flecha. Es común que los Infernis tengan dos o cuatro cuernos —aunque algunos lucen coronas de muchos cuernos, o uno solo—. Estos cuernos también pueden crecer de forma asimétrica, formando figuras únicas, a menudo curvas, que los Infernis realzan con tallados y ornamentos. Su piel, su cabello y sus cuernos se presentan en un surtido de colores que puede incluir suaves pasteles, tonos marcados o matices vibrantes, como el escarlata rosado, el púrpura profundo y el negro azabache.\n\nLos Infernis poseen un «semblante terrible» que se manifiesta tanto de forma involuntaria —como cuando sienten miedo u otras emociones intensas— como deliberada —como cuando desean intimidar a un adversario—. Este semblante puede modificar brevemente su aspecto de diversas maneras, alargando sus dientes y uñas, cambiando el color de sus ojos, retorciendo sus cuernos o aumentando su estatura. De media, los Infernis viven hasta los 350 años, y algunos atribuyen esta longevidad a su linaje demoníaco.",
+    "feats": [
+      {
+        "name": "Fearless",
+        "text": "When you roll with Fear, you can **mark 2 Stress** to change it into a roll with Hope instead."
+      },
+      {
+        "name": "Dread Visage",
+        "text": "You have advantage on rolls to intimidate hostile creatures."
+      }
+    ]
+  },
+  {
+    "name": "Katari",
+    "description": "Los Katari son humanoides felinos, con garras retráctiles, pupilas verticales rasgadas y orejas altas y triangulares. También pueden tener pequeños colmillos caninos, pelaje suave y largos bigotes que ayudan a su percepción y orientación. Sus orejas pueden girar casi 180 grados para detectar sonidos, lo que añade aún más a sus sentidos aguzados. Los Katari pueden tener un aspecto más felino o más humanoide, con atributos gatunos en forma de pelo, bigotes y hocico. Cerca de la mitad de la población Katari tiene cola. Su piel y su pelaje se presentan en una amplia gama de tonos y patrones, como colores sólidos, tonos de calicó, rayas atigradas y un surtido de manchas, parches, jaspeados o bandas. Su estatura va de unos 3 a 6 ½ pies, y viven en torno a los 150 años.",
+    "feats": [
+      {
+        "name": "Feline Instincts",
+        "text": "When you make an Agility Roll, you can **spend 2 Hope** to reroll your Hope Die."
+      },
+      {
+        "name": "Retracting Claws",
+        "text": "Make an **Agility Roll** to scratch a target within Melee range. On a success, they become temporarily Vulnerable."
+      }
+    ]
+  },
+  {
+    "name": "Orc",
+    "description": "Los Orc son humanoides reconocibles con mayor facilidad por sus rasgos cuadrados y los colmillos —parecidos a los de un jabalí— que sobresalen de su mandíbula inferior. Los colmillos vienen en distintos tamaños y, aunque asoman de la boca, no se usan para consumir alimento. En cambio, muchos Orc eligen decorar sus colmillos con abundante ornamentación. Los Orc viven por lo general 125 años y, a menos que se los altere, sus colmillos siguen creciendo a lo largo de toda su vida. Sus orejas son puntiagudas, y su cabello y su piel suelen presentar tonos verdes, azules, rosas o grises. Los Orc tienden a una complexión musculosa, y su estatura media va de los 5 a los 6 ½ pies.",
+    "feats": [
+      {
+        "name": "Sturdy",
+        "text": "When you have 1 Hit Point remaining, attacks against you have disadvantage."
+      },
+      {
+        "name": "Tusks",
+        "text": "When you succeed on an attack against a target within Melee range, you can **spend a Hope** to gore the target with your tusks, dealing an extra **1d6** damage."
+      }
+    ]
+  },
+  {
+    "name": "Ribbet",
+    "description": "Los Ribbet se asemejan a ranas antropomorfas, con ojos saltones y manos y pies palmeados. Tienen una piel lisa (aunque a veces verrugosa) y húmeda, y los ojos situados a ambos lados de la cabeza. Algunos Ribbet tienen patas traseras de más del doble de la longitud de su torso, mientras que otros tienen extremidades cortas. Sin importar su tamaño (que va de unos 3 a 4 ½ pies), los Ribbet se desplazan principalmente a saltos. Todos los Ribbet tienen apéndices palmeados, lo que les permite nadar con facilidad. Algunos Ribbet poseen un camuflaje natural de verdes y marrones, mientras que otros lucen colores vivos con patrones llamativos. Sea cual sea su aspecto, todos los Ribbet nacen de huevos puestos en el agua, eclosionan como renacuajos y, tras unos 6 o 7 años, se convierten en anfibios capaces de moverse por tierra. Los Ribbet viven aproximadamente 100 años.",
+    "feats": [
+      {
+        "name": "Amphibious",
+        "text": "You can breathe and move naturally underwater."
+      },
+      {
+        "name": "Long Tongue",
+        "text": "You can use your long tongue to grab onto things within Close range. **Mark a Stress** to use your tongue as a Finesse Close weapon that deals **d12** physical damage using your Proficiency."
+      }
+    ]
+  },
+  {
+    "name": "Simiah",
+    "description": "Los Simiah se asemejan a monos y simios antropomorfos, con extremidades largas y pies prensiles. Aunque su aspecto refleja a todas las criaturas simiescas, desde el gorila más grande hasta el tití más pequeño, su tamaño no se corresponde con el de sus equivalentes animales, y pueden medir entre 2 y 6 pies. Todos los Simiah pueden usar sus diestros pies para la comunicación no verbal, el trabajo y el combate. Además, algunos también tienen colas prensiles capaces de agarrar objetos o ayudar a mantener el equilibrio en maniobras difíciles. Estos rasgos otorgan a los miembros de esta ascendencia una agilidad única que los ayuda en toda clase de tareas físicas. En particular, los Simiah son hábiles escaladores y pueden pasar con facilidad de la marcha bípeda al desplazamiento sobre los nudillos y la escalada, y de vuelta. De media, los Simiah viven unos 100 años.",
+    "feats": [
+      {
+        "name": "Natural Climber",
+        "text": "You have advantage on Agility Rolls that involve balancing and climbing."
+      },
+      {
+        "name": "Nimble",
+        "text": "Gain a permanent +1 bonus to your Evasion at character creation.",
+        "bonus": {
+          "evasion": "+1"
+        }
+      }
+    ]
+  }
+]

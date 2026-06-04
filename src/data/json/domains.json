@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Arcana",
+    "description": "Arcana es el dominio de la magia innata e instintiva. Quienes eligen este camino canalizan las fuerzas crudas y enigmáticas de los reinos para manipular tanto su propia energía como los elementos. Arcana ofrece a sus practicantes un poder volátil, pero increíblemente potente cuando se canaliza correctamente. Pueden acceder al dominio de Arcana las clases Druid y Sorcerer."
+  },
+  {
+    "name": "Blade",
+    "description": "Blade es el dominio de la maestría con las armas. Ya sea con acero, arco o algún arma más especializada, quienes siguen este camino tienen la destreza para segar la vida de otros. Quienes empuñan Blade se consagran a alcanzar un poder inexorable sobre la muerte. Pueden acceder al dominio de Blade las clases Guardian y Warrior."
+  },
+  {
+    "name": "Bone",
+    "description": "Bone es el dominio de la táctica y el cuerpo. Quienes practican este dominio poseen un control asombroso sobre sus propias capacidades físicas y un ojo agudo para predecir el comportamiento de otros en combate. Los adeptos de Bone alcanzan una comprensión sin igual de los cuerpos y sus movimientos. Pueden acceder al dominio de Bone las clases Ranger y Warrior."
+  },
+  {
+    "name": "Codex",
+    "description": "Codex es el dominio del estudio mágico intensivo. Quienes buscan el conocimiento mágico recurren a las ecuaciones de poder registradas en libros, escritas en pergaminos, grabadas en muros o tatuadas en la piel. Codex ofrece una comprensión imponente y versátil de la magia a los devotos que persiguen un saber más allá de los límites de la sabiduría común. Pueden acceder al dominio de Codex las clases Bard y Wizard."
+  },
+  {
+    "name": "Grace",
+    "description": "Grace es el dominio del carisma. Mediante una narración cautivadora, hechizos encantadores o un velo de mentiras, quienes canalizan este poder definen la realidad de sus adversarios, doblegando su percepción a voluntad. Grace otorga a sus practicantes un magnetismo puro y el dominio del lenguaje. Pueden acceder al dominio de Grace las clases Bard y Rogue."
+  },
+  {
+    "name": "Midnight",
+    "description": "Midnight es el dominio de las sombras y el secreto. Ya sea con trucos ingeniosos, magia hábil o el manto de la noche, quienes canalizan estas fuerzas practican el arte de la ocultación y pueden descubrir tesoros escondidos. Midnight otorga a sus practicantes el poder de controlar y crear enigmas. Pueden acceder al dominio de Midnight las clases Rogue y Sorcerer."
+  },
+  {
+    "name": "Sage",
+    "description": "Sage es el dominio del mundo natural. Quienes recorren este camino canalizan el poder desatado de la tierra y sus criaturas para liberar magia en estado puro. Sage concede a sus adeptos la vitalidad de una flor en plena floración y la ferocidad de un depredador hambriento. Pueden acceder al dominio de Sage las clases Druid y Ranger."
+  },
+  {
+    "name": "Splendor",
+    "description": "Splendor es el dominio de la vida. A través de esta magia, sus seguidores obtienen la capacidad de sanar y, hasta cierto punto, controlar la muerte. Splendor ofrece a sus discípulos la magnífica capacidad de dar y de poner fin a la vida. Pueden acceder al dominio de Splendor las clases Seraph y Wizard."
+  },
+  {
+    "name": "Valor",
+    "description": "Valor es el dominio de la protección. Ya sea atacando o defendiendo, quienes eligen esta disciplina canalizan una fuerza formidable para proteger a sus aliados en la batalla. Valor ofrece un gran poder a quienes alzan su escudo en defensa de los demás. Pueden acceder al dominio de Valor las clases Guardian y Seraph."
+  }
+]

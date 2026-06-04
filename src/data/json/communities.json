@@ -1,0 +1,110 @@
+[
+  {
+    "name": "Highborne",
+    "description": "Pertenecer a una comunidad Highborne significa que estás acostumbrado a una vida de elegancia, opulencia y prestigio en los estratos más altos de la sociedad. Tradicionalmente, los miembros de una comunidad Highborne poseen una riqueza material extraordinaria. Aunque esto puede adoptar muchas formas según la comunidad —oro y otros minerales, tierras o el control de los medios de producción—, este estatus siempre viene acompañado de poder e influencia. Los Highborne conceden gran valor a los títulos y las posesiones, y hay poca movilidad social dentro de sus filas. Los miembros de una comunidad Highborne a menudo controlan la situación política y económica de las zonas donde viven, gracias a su capacidad para influir en la gente y en la economía con su cuantiosa fortuna. La salud y la seguridad de las personas menos acomodadas que habitan esos lugares a menudo dependen de que esta clase dirigente Highborne priorice el bienestar de sus súbditos por encima del beneficio.",
+    "note": "Los Highborne suelen ser amables, francos, intrigantes, emprendedores, ostentosos e imperturbables.",
+    "feats": [
+      {
+        "name": "Privilege",
+        "text": "You have advantage on rolls to consort with nobles, negotiate prices, or leverage your reputation to get what you want."
+      }
+    ]
+  },
+  {
+    "name": "Loreborne",
+    "description": "Pertenecer a una comunidad Loreborne significa que provienes de una sociedad que valora la destreza académica o política. Las comunidades Loreborne valoran enormemente el conocimiento, a menudo en forma de preservación histórica, ascenso político, estudio científico, desarrollo de habilidades o recopilación de saberes y mitología. La mayoría de sus miembros investigan en instituciones erigidas en los bastiones de la civilización, mientras que unos pocos excéntricos prosperan recopilando información del mundo natural. Algunos pueden ser aislacionistas y operar en pequeños enclaves, escuelas o gremios siguiendo su propio ethos particular. Otros, en cambio, esgrimen su conocimiento a mayor escala, realizando hábiles maniobras políticas por todo el panorama gubernamental.",
+    "note": "Los Loreborne suelen ser directos, elocuentes, inquisitivos, pacientes, rapsódicos e ingeniosos.",
+    "feats": [
+      {
+        "name": "Well-Read",
+        "text": "You have advantage on rolls that involve the history, culture, or politics of a prominent person or place."
+      }
+    ]
+  },
+  {
+    "name": "Orderborne",
+    "description": "Pertenecer a una comunidad Orderborne significa que provienes de un colectivo centrado en la disciplina o la fe, y que defiendes un conjunto de principios que reflejan tu experiencia allí. Los Orderborne suelen estar entre los más poderosos de las comunidades vecinas. Al alinear a los miembros de su sociedad en torno a un valor o un objetivo común —como un dios, una doctrina, un ethos o incluso un negocio u oficio compartido—, los órganos de gobierno de estos enclaves pueden movilizar a grandes poblaciones con menos esfuerzo. Aunque las comunidades Orderborne adoptan formas muy diversas —algunas incluso profundamente pacifistas—, quizá las más temidas sean las que se estructuran en torno a la destreza militar. En tal caso, no es raro que los Orderborne proporcionen soldados de alquiler a otras ciudades o países.",
+    "note": "Los Orderborne suelen ser ambiciosos, benevolentes, reflexivos, prudentes, sardónicos y estoicos.",
+    "feats": [
+      {
+        "name": "Dedicated",
+        "text": "Record three sayings or values your upbringing instilled in you. Once per rest, when you describe how you’re embodying one of these principles through your current action, you can roll a **d20** as your Hope Die.",
+        "tracked": true,
+        "use_amount": "1",
+        "condition": "shortRest"
+      }
+    ]
+  },
+  {
+    "name": "Ridgeborne",
+    "description": "Pertenecer a una comunidad Ridgeborne significa que has tenido por hogar los picos rocosos y los escarpados acantilados de la ladera de la montaña. Quienes han vivido en las montañas suelen considerarse más recios que la mayoría, porque han prosperado en uno de los terrenos más peligrosos que ofrecen muchos continentes. Estos grupos son hábiles para la adaptación y desarrollan tecnologías y equipos singulares para mover tanto a personas como mercancías por terrenos difíciles. Por eso los Ridgeborne crecen trepando y escalando, lo que los hace robustos y de voluntad firme. Los asentamientos Ridgeborne adoptan formas muy diversas: algunas ciudades labran caras enteras de acantilado, otras construyen castillos de piedra, y otras más viven en pequeñas casas en picos azotados por el viento. A las fuerzas externas a menudo les cuesta atacar a los grupos Ridgeborne, ya que las pequeñas milicias y los grandes ejércitos de las montañas son hábiles aprovechando su ventaja desde las alturas.",
+    "note": "Los Ridgeborne suelen ser audaces, recios, indómitos, leales, reservados y tercos.",
+    "feats": [
+      {
+        "name": "Steady",
+        "text": "You have advantage on rolls to traverse dangerous cliffs and ledges, navigate harsh environments, and use your survival knowledge."
+      }
+    ]
+  },
+  {
+    "name": "Seaborne",
+    "description": "Pertenecer a una comunidad Seaborne significa que viviste sobre o cerca de una gran masa de agua. Las comunidades Seaborne se construyen, tanto física como culturalmente, en torno a las aguas concretas que llaman hogar. Algunos de estos grupos viven en la costa y levantan puertos para lugareños y viajeros por igual. Esos puertos funcionan como centros de comercio, atracciones turísticas o, simplemente, un lugar seguro donde descansar la cabeza tras semanas de viaje. Otros Seaborne viven sobre el agua, en pequeños botes o grandes navíos, y para ellos la idea de «hogar» es un barco y su tripulación, más que cualquier porción de tierra. Sea cual sea su ubicación exacta, las comunidades Seaborne están íntimamente ligadas a las mareas del océano y a las criaturas que lo habitan. Los Seaborne aprenden a pescar desde muy jóvenes y se entrenan desde la cuna para aguantar la respiración y nadar incluso en las aguas más turbulentas. Quienes provienen de estos grupos son muy solicitados por sus dotes de navegación, y muchos llegan a ser capitanes de embarcaciones, ya sea dentro de su propia comunidad, al servicio de otra o incluso al timón de una poderosa operación naval.",
+    "note": "Los Seaborne suelen ser francos, cooperativos, exuberantes, fieros, resueltos y curtidos.",
+    "feats": [
+      {
+        "name": "Know the Tide",
+        "text": "You can sense the ebb and flow of life. When you roll with Fear, place a token on your community card. You can hold a number of tokens equal to your level. Before you make an action roll, you can spend any number of these tokens to gain a +1 bonus to the roll for each token spent. At the end of each session, clear all unspent tokens.",
+        "tracked": true,
+        "use_amount": "level",
+        "condition": "session"
+      }
+    ]
+  },
+  {
+    "name": "Slyborne",
+    "description": "Pertenecer a una comunidad Slyborne significa que provienes de un grupo que opera al margen de la ley, e incluye toda clase de criminales, estafadores y embaucadores. A los miembros de las comunidades Slyborne los unen sus objetivos dispares y los ingeniosos medios con que los alcanzan. Mucha gente de estas comunidades posee un repertorio de habilidades poco escrupulosas: falsificación, robo, contrabando y violencia. Cualquier clase social puede ser Slyborne, desde quienes han amasado una enorme riqueza e influencia hasta quienes no tienen una sola moneda a su nombre. A ojos de un extraño, los Slyborne podrían parecer rufianes sin lealtad alguna, pero estas comunidades poseen algunos de los códigos de honor más estrictos que, cuando se rompen, pueden acarrear un final aterrador para el transgresor.",
+    "note": "Los Slyborne suelen ser calculadores, ingeniosos, formidables, perspicaces, astutos y tenaces.",
+    "feats": [
+      {
+        "name": "Scoundrel",
+        "text": "You have advantage on rolls to negotiate with criminals, detect lies, or find a safe place to hide."
+      }
+    ]
+  },
+  {
+    "name": "Underborne",
+    "description": "Pertenecer a una comunidad Underborne significa que provienes de una sociedad subterránea. Muchos Underborne viven justo debajo de las ciudades y aldeas de otros colectivos, mientras que algunos habitan mucho más en lo profundo. Estas comunidades varían en tamaño, desde pequeños grupos en madrigueras hasta enormes metrópolis en cavernas de piedra. En muchos lugares, los Underborne son reconocidos por su increíble audacia y destreza, que hacen posibles grandes proezas de arquitectura e ingeniería. A los Underborne se los contrata con frecuencia por su valentía, ya que incluso el menos atrevido de ellos probablemente se haya topado con formidables bestias del subsuelo, y aprender a despachar a tales criaturas es práctica común en estas sociedades. Debido a los peligros de su entorno, muchas comunidades Underborne desarrollan lenguajes no verbales únicos que resultan igual de útiles en la superficie.",
+    "note": "Los Underborne suelen ser serenos, escurridizos, indómitos, innovadores, ingeniosos y sencillos.",
+    "feats": [
+      {
+        "name": "Low-Light Living",
+        "text": "When you’re in an area with low light or heavy shadow, you have advantage on rolls to hide, investigate, or perceive details within that area."
+      }
+    ]
+  },
+  {
+    "name": "Wanderborne",
+    "description": "Pertenecer a una comunidad Wanderborne significa que has vivido como nómada, renunciando a un hogar permanente y conociendo una gran variedad de culturas. A diferencia de muchas comunidades que se definen por su lugar de origen, los Wanderborne se definen por su estilo de vida itinerante. Debido a su migración constante, los Wanderborne dan menos importancia a la acumulación de bienes materiales y prefieren adquirir información, habilidades y contactos. Aunque a algunos Wanderborne los une un ethos común, como una religión o un conjunto de valores políticos o económicos, otros se reúnen tras una tragedia compartida, como la pérdida de su hogar o de su tierra. Sea cual sea el motivo, los peligros que plantea la vida en el camino y la decisión de seguir recorriéndolo juntos hacen que los Wanderborne sean célebres por su lealtad inquebrantable.",
+    "note": "Los Wanderborne suelen ser inescrutables, magnánimos, joviales, fiables, sagaces y poco convencionales.",
+    "feats": [
+      {
+        "name": "Nomadic Pack",
+        "text": "Add a Nomadic Pack to your inventory. Once per session, you can spend a Hope to reach into this pack and pull out a mundane item that’s useful to your situation. Work with the GM to figure out what item you take out.",
+        "tracked": true,
+        "use_amount": "1",
+        "condition": "session"
+      }
+    ]
+  },
+  {
+    "name": "Wildborne",
+    "description": "Pertenecer a una comunidad Wildborne significa que viviste en lo más profundo del bosque. Las comunidades Wildborne se definen por su dedicación a la conservación de sus tierras natales, y muchas tienen fuertes vínculos religiosos o culturales con la fauna entre la que viven. Esto da lugar a avances arquitectónicos y tecnológicos singulares que favorecen la sostenibilidad por encima de los resultados inmediatos y de alto rendimiento. Es un sello distintivo de las sociedades Wildborne integrar sus aldeas y ciudades con el entorno natural y evitar perturbar la vida de las plantas y los animales. Mientras que algunos construyen sus moradas en lo alto de las ramas de los árboles, otros establecen sus hogares en el suelo, bajo el dosel del bosque. No es raro que los Wildborne permanezcan reclusos y ocultos en sus hogares boscosos.",
+    "note": "Los Wildborne suelen ser recios, leales, protectores, reclusivos, sagaces y vibrantes.",
+    "feats": [
+      {
+        "name": "Lightfoot",
+        "text": "Your movement is naturally silent. You have advantage on rolls to move without being heard."
+      }
+    ]
+  }
+]
