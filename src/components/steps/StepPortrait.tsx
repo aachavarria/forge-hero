@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useCreator } from "@/lib/store";
 import {
   applyFigureEdit,
@@ -28,10 +28,15 @@ export function StepPortrait() {
   const draft = useCreator() as unknown as CharacterDraft;
   const portrait = useCreator((s) => s.portrait);
   const figure = useCreator((s) => s.figure);
+  const savedPrompt = useCreator((s) => s.portraitPrompt);
   const update = useCreator((s) => s.update);
 
   const [mode, setMode] = useState<"generate" | "upload">("generate");
-  const [prompt, setPrompt] = useState(() => buildPortraitPrompt(draft));
+  // Seed from the persisted prompt (survives refresh); fall back to one built
+  // from the character only on a first visit when nothing has been saved yet.
+  const [prompt, setPrompt] = useState(
+    () => savedPrompt || buildPortraitPrompt(draft)
+  );
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   // Which figure action is running (drives the overlay + button labels), plus a
@@ -40,6 +45,21 @@ export function StepPortrait() {
   const [figureError, setFigureError] = useState<string | null>(null);
   const [figureEdit, setFigureEdit] = useState("");
   const [editError, setEditError] = useState<string | null>(null);
+
+  // Persist prompt edits to IndexedDB so they aren't lost on refresh. Debounced
+  // (not on every keystroke) because the persist layer reserializes the whole
+  // draft — base64 portrait/figure included — on each store write.
+  useEffect(() => {
+    if (prompt === savedPrompt) return;
+    const id = setTimeout(() => update({ portraitPrompt: prompt }), 500);
+    return () => clearTimeout(id);
+  }, [prompt, savedPrompt, update]);
+
+  // Flush immediately when leaving the field (e.g. clicking Generate or moving
+  // to another step) so the debounce can't drop an edit on unmount.
+  const persistPrompt = () => {
+    if (prompt !== savedPrompt) update({ portraitPrompt: prompt });
+  };
 
   const onUpload = (file: File) => {
     setError(null);
@@ -179,6 +199,7 @@ export function StepPortrait() {
                 rows={7}
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
+                onBlur={persistPrompt}
               />
               <Button onClick={onGenerate} disabled={loading || !prompt.trim()}>
                 {loading ? "Conjurando…" : "✦ Generar retrato"}

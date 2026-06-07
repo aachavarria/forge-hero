@@ -35,6 +35,7 @@ function initialDraft(): CharacterDraft {
     connectionAnswers: {},
     connectionExtra: "",
     appearance: {},
+    portraitPrompt: "",
     portrait: { kind: null, dataUrl: null },
     figure: { kind: null, dataUrl: null },
   };

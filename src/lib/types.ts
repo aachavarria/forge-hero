@@ -214,6 +214,10 @@ export interface CharacterDraft {
 
   appearance: AppearanceChoices;
 
+  /** The editable portrait prompt as last shown in the textarea. Persisted on
+      its own (not just inside portrait/figure) so a user's tweaks survive a
+      refresh even before they generate an image. */
+  portraitPrompt?: string;
   portrait: PortraitState;
   /** Clean, full-body "3D-ready" render derived from the portrait prompt, meant
       to be handed to image-to-3D tools (Meshy, Tripo). */
