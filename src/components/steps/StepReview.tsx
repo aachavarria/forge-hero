@@ -14,6 +14,7 @@ import { deriveStats } from "@/lib/derive";
 import { domainTheme } from "@/lib/domains";
 import {
   hasSheet,
+  illustratedSheetExtrasFor,
   illustratedSheetPathFor,
   sheetExtrasFor,
   sheetPathFor,
@@ -158,6 +159,7 @@ export function StepReview() {
   const sheetPath = sheetPathFor(draft.className);
   const sheetExtras = sheetExtrasFor(draft.className);
   const illustratedPath = illustratedSheetPathFor(draft.className);
+  const illustratedExtras = illustratedSheetExtrasFor(draft.className);
   const heritage = [ancestry?.name, community?.name].filter(Boolean).join(" / ");
 
   const [illustrating, setIllustrating] = useState(false);
@@ -286,6 +288,9 @@ export function StepReview() {
               {illustratedPath
                 ? "Hoja A5 (por Qedhup) con tu retrato incrustado y nombre, linaje y subclase ya escritos. Incluye el tracker de consumibles y subida de nivel."
                 : "Elige una clase para desbloquear la hoja ilustrada."}
+              {illustratedExtras ? (
+                <span className="text-parch-faint"> {illustratedExtras}</span>
+              ) : null}
             </p>
             <div className="mt-3">
               <Button

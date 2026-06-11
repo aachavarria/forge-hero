@@ -11,10 +11,13 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 
 // Each entry: { src, outDir, sheets } where sheets maps class slug -> 1-indexed
-// page ranges in that source PDF. Guide pages are intentionally omitted.
+// page ranges in that source PDF. Guide pages are intentionally omitted. A page
+// may also be { src, page } to pull from a different source PDF.
+const OFFICIAL_SRC = "Character-Sheets-and-Guides-Daggerheart-May212025.pdf";
+
 const JOBS = [
   {
-    src: "Character-Sheets-and-Guides-Daggerheart-May212025.pdf",
+    src: OFFICIAL_SRC,
     outDir: "public/sheets",
     sheets: {
       bard: [1],
@@ -35,13 +38,15 @@ const JOBS = [
     // level-up tracker, bundled with every class. The blank pages 1-2 are
     // skipped — we always use the class-stamped fronts. The front page has an
     // empty art frame we fill with the player's portrait at download time.
+    // Qedhup's set has no companion sheet, so the Ranger borrows the official
+    // one (letter-size page among A5 pages — intentional).
     src: "qedhup-daggerheart-a5-pc-sheets.pdf",
     outDir: "public/sheets-qedhup",
     sheets: {
       bard: [3, 4, 21],
       druid: [5, 6, 21],
       guardian: [7, 8, 21],
-      ranger: [9, 10, 21],
+      ranger: [9, 10, { src: OFFICIAL_SRC, page: 10 }, 21],
       rogue: [11, 12, 21],
       seraph: [13, 14, 21],
       sorcerer: [15, 16, 21],
@@ -81,8 +86,12 @@ try {
     console.log(`\n# ${src} -> ${outDir}`);
     for (const [klass, pages] of Object.entries(sheets)) {
       const partFiles = pages.map((p, i) => {
+        const { src: pageSrc, page } =
+          typeof p === "number" ? { src, page: p } : p;
         const out = join(tmp, `${outDir.replace(/\W/g, "_")}-${klass}-${i}.pdf`);
-        execFileSync(pdfseparate, ["-f", String(p), "-l", String(p), src, out]);
+        execFileSync(pdfseparate, [
+          "-f", String(page), "-l", String(page), pageSrc, out,
+        ]);
         return out;
       });
 
@@ -92,7 +101,10 @@ try {
       } else {
         execFileSync(pdfunite, [...partFiles, dest]);
       }
-      console.log(`✓ ${dest}  (pages ${pages.join(", ")})`);
+      const labels = pages.map((p) =>
+        typeof p === "number" ? p : `${p.src}:${p.page}`
+      );
+      console.log(`✓ ${dest}  (pages ${labels.join(", ")})`);
     }
   }
 } finally {

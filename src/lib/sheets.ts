@@ -50,3 +50,15 @@ export function sheetExtrasFor(className?: string | null): string | null {
       return null;
   }
 }
+
+/**
+ * Extra pages bundled into the illustrated (Qedhup) sheet. Qedhup's set has no
+ * companion sheet of its own, so the Ranger's bundles the official one.
+ */
+export function illustratedSheetExtrasFor(
+  className?: string | null
+): string | null {
+  return className === "Ranger"
+    ? "Incluye también la hoja oficial de companion (para la subclase Beastbound)."
+    : null;
+}
