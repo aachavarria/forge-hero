@@ -1,0 +1,660 @@
+/* ── The Witherwild — intro cinemática (ruta /witherwild) ───────────────────
+   Identidad propia, oscura y orgánica: negro de bosque, musgo, verde
+   bioluminiscente de la flor nocturna, carmesí del velo de dama. Reutiliza las
+   fuentes globales (Marcellus display / Spectral body). Clases prefijadas .ww-*
+   siguiendo el patrón del proyecto. */
+
+.ww-root {
+  --ww-night: #060a09;
+  --ww-deep: #0a1410;
+  --ww-bone: #efe9da;
+  --ww-bone-dim: #b9b3a3;
+  --ww-moss: #86b06b;
+  --ww-glow: #9ff0c9; /* night-bloom */
+  --ww-crimson: #e26a5d; /* lady's veil */
+  --ww-stone: #a6b7bf; /* Haven cold */
+  --ww-accent: var(--ww-glow);
+
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  overflow: hidden;
+  background: var(--ww-night);
+  color: var(--ww-bone);
+  font-family: var(--font-body), Georgia, serif;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Grano fílmico tenue sobre todo el escenario. */
+.ww-root::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── Escena ─────────────────────────────────────────────────────────────── */
+.ww-scene {
+  position: absolute;
+  inset: 0;
+}
+
+.ww-art {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: var(--ww-deep);
+}
+.ww-art-img {
+  position: absolute;
+  inset: -4%; /* margen para que el Ken Burns no muestre bordes */
+  width: 108%;
+  height: 108%;
+  object-fit: cover;
+  will-change: transform;
+  animation: ww-ken 16s ease-out both;
+}
+.ww-art-img.ww-ken-in {
+  animation-name: ww-ken-in;
+}
+.ww-art-img.ww-ken-out {
+  animation-name: ww-ken-out;
+}
+.ww-art-img.ww-ken-left {
+  animation-name: ww-ken-left;
+}
+.ww-art-img.ww-ken-right {
+  animation-name: ww-ken-right;
+}
+
+/* Marcador mientras el PNG aún no existe / no carga: gradiente atmosférico. */
+.ww-art-fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(120% 90% at 30% 10%, color-mix(in srgb, var(--ww-accent) 22%, transparent), transparent 60%),
+    radial-gradient(120% 90% at 80% 90%, rgba(0, 0, 0, 0.6), transparent 55%),
+    linear-gradient(160deg, var(--ww-deep), var(--ww-night));
+}
+
+/* Velos para legibilidad del texto. */
+.ww-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(140% 120% at 50% 35%, transparent 38%, rgba(0, 0, 0, 0.5) 100%),
+    linear-gradient(0deg, rgba(3, 6, 5, 0.92) 2%, rgba(3, 6, 5, 0.45) 28%, transparent 55%);
+}
+.ww-scrim--left::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(3, 6, 5, 0.8) 0%, rgba(3, 6, 5, 0.2) 42%, transparent 65%);
+}
+.ww-scrim--center::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(90% 90% at 50% 50%, rgba(3, 6, 5, 0.55), transparent 70%);
+}
+
+/* ── Bloque de texto ────────────────────────────────────────────────────── */
+.ww-text {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+  max-width: min(46rem, 88vw);
+  padding: 0 clamp(1.25rem, 5vw, 4.5rem);
+}
+.ww-text--bottom {
+  left: 0;
+  bottom: clamp(2.5rem, 8vh, 6rem);
+  text-align: left;
+}
+.ww-text--left {
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: left;
+}
+.ww-text--center {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  max-width: min(52rem, 90vw);
+}
+
+.ww-act {
+  font-family: var(--font-display), Georgia, serif;
+  text-transform: uppercase;
+  letter-spacing: 0.36em;
+  font-size: clamp(0.62rem, 1.4vw, 0.78rem);
+  color: var(--ww-accent);
+  margin: 0 0 1rem;
+  text-shadow: 0 0 18px color-mix(in srgb, var(--ww-accent) 45%, transparent);
+}
+
+.ww-title {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: 0.01em;
+  font-size: clamp(2rem, 6vw, 4rem);
+  color: var(--ww-bone);
+  margin: 0;
+  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.7);
+}
+
+.ww-rule {
+  height: 1px;
+  width: clamp(3rem, 8vw, 6rem);
+  margin: 1.4rem 0;
+  background: linear-gradient(
+    90deg,
+    var(--ww-accent),
+    color-mix(in srgb, var(--ww-accent) 10%, transparent)
+  );
+  box-shadow: 0 0 16px color-mix(in srgb, var(--ww-accent) 60%, transparent);
+}
+.ww-text--center .ww-rule {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ww-body {
+  font-size: clamp(1.02rem, 2.1vw, 1.32rem);
+  line-height: 1.62;
+  font-weight: 300;
+  color: var(--ww-bone);
+  margin: 0;
+  max-width: 40rem;
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.85);
+}
+.ww-text--center .ww-body {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ww-caption {
+  margin: 1.1rem 0 0;
+  font-style: italic;
+  font-size: clamp(0.82rem, 1.6vw, 0.98rem);
+  line-height: 1.5;
+  color: var(--ww-bone-dim);
+  max-width: 36rem;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.85);
+}
+.ww-text--center .ww-caption {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Portada ────────────────────────────────────────────────────────────── */
+.ww-title--cover {
+  font-size: clamp(2.8rem, 11vw, 8rem);
+  letter-spacing: 0.04em;
+  text-shadow:
+    0 2px 40px rgba(0, 0, 0, 0.8),
+    0 0 60px color-mix(in srgb, var(--ww-accent) 28%, transparent);
+}
+.ww-cover-tag {
+  font-size: clamp(1.05rem, 2.4vw, 1.5rem);
+  line-height: 1.5;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--ww-bone);
+  margin: 1.4rem auto 0;
+  max-width: 40rem;
+}
+.ww-cover-credit {
+  margin-top: 1.8rem;
+  font-family: var(--font-display), Georgia, serif;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: clamp(0.6rem, 1.3vw, 0.74rem);
+  color: var(--ww-bone-dim);
+}
+
+/* ── CTA final ──────────────────────────────────────────────────────────── */
+.ww-cta-btn {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.8rem;
+  padding: 0.85rem 1.8rem;
+  font-family: var(--font-display), Georgia, serif;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: clamp(0.78rem, 1.7vw, 0.95rem);
+  color: var(--ww-night);
+  background: var(--ww-accent);
+  border: 1px solid color-mix(in srgb, var(--ww-accent) 70%, #fff);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--ww-accent) 50%, transparent);
+}
+.ww-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px -16px color-mix(in srgb, var(--ww-accent) 80%, transparent);
+}
+.ww-cta-btn:focus-visible {
+  outline: 2px solid var(--ww-bone);
+  outline-offset: 3px;
+}
+
+/* ── Controles ──────────────────────────────────────────────────────────── */
+.ww-controls {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+.ww-controls button,
+.ww-controls a {
+  pointer-events: auto;
+}
+
+.ww-skip {
+  position: absolute;
+  top: clamp(1rem, 3vh, 1.8rem);
+  right: clamp(1rem, 3vw, 2rem);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(6, 10, 9, 0.5);
+  border: 1px solid color-mix(in srgb, var(--ww-bone) 22%, transparent);
+  color: var(--ww-bone-dim);
+  font-family: var(--font-display), Georgia, serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.66rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.ww-skip:hover {
+  color: var(--ww-bone);
+  border-color: color-mix(in srgb, var(--ww-bone) 45%, transparent);
+}
+
+/* Flechas prev/next */
+.ww-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(2.4rem, 4vw, 3rem);
+  height: clamp(2.4rem, 4vw, 3rem);
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(6, 10, 9, 0.35);
+  border: 1px solid color-mix(in srgb, var(--ww-bone) 16%, transparent);
+  color: var(--ww-bone);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.25s ease, background 0.2s ease, transform 0.2s ease;
+}
+.ww-root:hover .ww-nav {
+  opacity: 0.55;
+}
+.ww-nav:hover {
+  opacity: 1;
+  background: rgba(6, 10, 9, 0.7);
+}
+.ww-nav--prev {
+  left: clamp(0.75rem, 2vw, 1.4rem);
+}
+.ww-nav--next {
+  right: clamp(0.75rem, 2vw, 1.4rem);
+}
+.ww-nav[disabled] {
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+/* Barra de progreso segmentada (abajo). */
+.ww-progress {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: clamp(0.9rem, 2.5vh, 1.6rem);
+  display: flex;
+  gap: 6px;
+  padding: 0.4rem 0.6rem;
+  max-width: 92vw;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.ww-seg {
+  width: clamp(14px, 2vw, 26px);
+  height: 3px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ww-bone) 22%, transparent);
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.2s ease;
+  pointer-events: auto;
+}
+.ww-seg:hover {
+  background: color-mix(in srgb, var(--ww-bone) 45%, transparent);
+}
+.ww-seg--done {
+  background: color-mix(in srgb, var(--ww-accent) 55%, transparent);
+}
+.ww-seg--active {
+  background: var(--ww-accent);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--ww-accent) 70%, transparent);
+}
+
+/* Pista de teclado (solo portada). */
+.ww-hint {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(3rem, 9vh, 5.5rem);
+  transform: translateX(-50%);
+  font-family: var(--font-display), Georgia, serif;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 0.7rem;
+  color: var(--ww-bone-dim);
+  animation: ww-pulse 2.6s ease-in-out infinite;
+  white-space: nowrap;
+}
+
+/* ── Escenas-guía (comunidades / linajes / clases / preguntas) ──────────── */
+/* Viñeta sutil: la imagen se mantiene vívida; el contraste del texto lo da la
+   tarjeta esmerilada del panel, no un velo a pantalla completa. */
+.ww-scrim--guide {
+  background: radial-gradient(
+    135% 135% at 50% 50%,
+    transparent 35%,
+    rgba(3, 6, 5, 0.5) 100%
+  );
+}
+
+/* Contenedor a pantalla completa que centra el panel (el centrado NO va por
+   transform, para que la animación de entrada de Framer no lo pise). */
+.ww-panel {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1.5rem, 5vh, 3rem) clamp(1rem, 4vw, 2.5rem) clamp(3rem, 8vh, 4.5rem);
+  pointer-events: auto;
+}
+
+/* La tarjeta esmerilada con el contenido (esto es lo que anima Framer). */
+.ww-panel__inner {
+  width: min(68rem, 100%);
+  max-height: 100%;
+  overflow-y: auto;
+  text-align: center;
+  padding: clamp(1.4rem, 3.5vw, 2.6rem) clamp(1.2rem, 4vw, 3rem);
+  background: rgba(7, 12, 10, 0.55);
+  border: 1px solid color-mix(in srgb, var(--ww-bone) 13%, transparent);
+  border-radius: 10px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 40px 100px -50px rgba(0, 0, 0, 0.95);
+  -webkit-overflow-scrolling: touch;
+}
+
+.ww-panel .ww-act {
+  margin-bottom: 0.7rem;
+}
+.ww-panel__title {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 400;
+  line-height: 1.05;
+  font-size: clamp(1.7rem, 4.5vw, 2.9rem);
+  color: var(--ww-bone);
+  margin: 0;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.7);
+}
+.ww-panel__intro {
+  margin: 1rem auto 0;
+  max-width: 44rem;
+  font-size: clamp(0.98rem, 1.9vw, 1.16rem);
+  line-height: 1.6;
+  font-weight: 300;
+  color: var(--ww-bone);
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.85);
+}
+
+/* Comunidades: chips seleccionables */
+.ww-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1.6rem auto 0;
+  max-width: 52rem;
+}
+.ww-chip {
+  font-family: var(--font-display), Georgia, serif;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: clamp(0.62rem, 1.4vw, 0.74rem);
+  color: var(--ww-bone-dim);
+  background: rgba(8, 14, 12, 0.55);
+  border: 1px solid color-mix(in srgb, var(--ww-bone) 18%, transparent);
+  border-radius: 999px;
+  padding: 0.5rem 0.95rem;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.ww-chip:hover {
+  color: var(--ww-bone);
+  border-color: color-mix(in srgb, var(--ww-accent) 50%, transparent);
+}
+.ww-chip--active {
+  color: var(--ww-night);
+  background: var(--ww-accent);
+  border-color: color-mix(in srgb, var(--ww-accent) 70%, #fff);
+}
+
+/* Comunidades: detalle de la seleccionada */
+.ww-detail {
+  margin: 1.5rem auto 0;
+  max-width: 48rem;
+  text-align: left;
+}
+.ww-detail__role {
+  font-size: clamp(0.96rem, 1.8vw, 1.1rem);
+  line-height: 1.6;
+  font-weight: 300;
+  color: var(--ww-bone);
+  margin: 0 0 1.1rem;
+}
+.ww-qs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.ww-q {
+  position: relative;
+  padding-left: 1.5rem;
+  font-style: italic;
+  font-size: clamp(0.92rem, 1.7vw, 1.04rem);
+  line-height: 1.5;
+  color: var(--ww-bone-dim);
+}
+.ww-q::before {
+  content: "❧";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-style: normal;
+  color: var(--ww-accent);
+  text-shadow: 0 0 12px color-mix(in srgb, var(--ww-accent) 60%, transparent);
+}
+
+/* Briefing (linajes / clases): rejilla de tarjetas */
+.ww-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 0.9rem;
+  margin: 1.7rem auto 0;
+  max-width: 56rem;
+  text-align: left;
+}
+.ww-cardlet {
+  background: rgba(8, 14, 12, 0.5);
+  border: 1px solid color-mix(in srgb, var(--ww-bone) 12%, transparent);
+  border-left: 2px solid var(--ww-accent);
+  border-radius: 4px;
+  padding: 0.9rem 1.1rem;
+}
+.ww-cardlet__name {
+  font-family: var(--font-display), Georgia, serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: clamp(0.78rem, 1.6vw, 0.92rem);
+  color: var(--ww-bone);
+  margin: 0 0 0.4rem;
+}
+.ww-cardlet__blurb {
+  font-size: clamp(0.86rem, 1.6vw, 0.98rem);
+  line-height: 1.5;
+  font-weight: 300;
+  color: var(--ww-bone-dim);
+  margin: 0;
+}
+
+/* Preguntas (Sesión Cero): lista numerada */
+.ww-numbered {
+  list-style: none;
+  counter-reset: ww;
+  margin: 1.7rem auto 0;
+  max-width: 46rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.ww-numbered li {
+  counter-increment: ww;
+  position: relative;
+  padding-left: 3rem;
+  font-size: clamp(0.98rem, 1.9vw, 1.16rem);
+  line-height: 1.55;
+  font-weight: 300;
+  color: var(--ww-bone);
+}
+.ww-numbered li::before {
+  content: counter(ww);
+  position: absolute;
+  left: 0;
+  top: -0.1rem;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.5rem;
+  color: var(--ww-accent);
+  text-shadow: 0 0 14px color-mix(in srgb, var(--ww-accent) 55%, transparent);
+}
+
+/* Pie de navegación de las escenas-guía */
+.ww-panel__foot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 2rem auto 0;
+}
+.ww-pbtn {
+  font-family: var(--font-display), Georgia, serif;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: clamp(0.72rem, 1.5vw, 0.84rem);
+  color: var(--ww-bone-dim);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem 0.2rem;
+  transition: color 0.2s ease;
+}
+.ww-pbtn:hover {
+  color: var(--ww-bone);
+}
+.ww-pbtn--primary {
+  color: var(--ww-night);
+  background: var(--ww-accent);
+  border: 1px solid color-mix(in srgb, var(--ww-accent) 70%, #fff);
+  border-radius: 2px;
+  padding: 0.7rem 1.5rem;
+}
+.ww-pbtn--primary:hover {
+  color: var(--ww-night);
+  transform: translateY(-1px);
+}
+
+/* ── Keyframes ──────────────────────────────────────────────────────────── */
+@keyframes ww-ken-in {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.12);
+  }
+}
+@keyframes ww-ken-out {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes ww-ken-left {
+  from {
+    transform: scale(1.12) translateX(2.5%);
+  }
+  to {
+    transform: scale(1.12) translateX(-2.5%);
+  }
+}
+@keyframes ww-ken-right {
+  from {
+    transform: scale(1.12) translateX(-2.5%);
+  }
+  to {
+    transform: scale(1.12) translateX(2.5%);
+  }
+}
+@keyframes ww-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ww-art-img {
+    animation: none;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .ww-hint {
+    animation: none;
+  }
+}
